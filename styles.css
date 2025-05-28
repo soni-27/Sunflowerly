@@ -1,16 +1,19 @@
-/* styles.css */
-
+/* ----------------------------
+   Global Body Styling
+----------------------------- */
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #fdfcfb, #e2d1c3);
+  background: linear-gradient(160deg, #f2e8d7, #f3e2d7);
   color: #333;
   overflow-x: hidden;
-  transition: background 0.5s ease;
+  /* transition: background 0.5s ease; */
   height: 100vh;
-  }
+}
 
-  /* Pointer-following gradient hover */
+/* ----------------------------
+   Pointer-following Highlight Effect
+----------------------------- */
 body::before {
   content: '';
   position: fixed;
@@ -24,122 +27,132 @@ body::before {
   z-index: 0;
   transition: top 0.05s ease, left 0.05s ease;
 }
-  
-  body:hover {
-  background: linear-gradient(135deg, #f7e7ce, #e6cfc1);
-  }
 
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1em 2em;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 10;
-    backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  }
+/* ----------------------------
+   Navbar Styling
+----------------------------- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 2em;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
 
-  .logo {
-    font-weight: bold;
-    font-size: 1.2em;
-  }
+.logo {
+  font-weight: bold;
+  font-size: 1.2em;
+}
 
+.menu-toggle {
+  font-size: 1.5em;
+  cursor: pointer;
+  display: block;
+  padding: 10px;
+  z-index: 11;
+}
+
+nav {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1em;
+  display: none;
+  z-index: 10;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  margin-right: 3em;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #6a4e42;
+}
+
+nav.show {
+  display: block;
+}
+
+/* ----------------------------
+   Navbar Responsive for Desktop
+----------------------------- */
+@media screen and (min-width: 768px) {
   .menu-toggle {
-    font-size: 1.5em;
-    cursor: pointer;
-    display: block;
-    padding: 10px;
-    z-index: 11; /* Ensure it appears above other elements */
+    display: none;
   }
 
   nav {
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 1em;
-    display: none;
-    z-index: 10;
-    max-height: 80vh; /* Prevent overflow */
-    overflow-y: auto; /* Enable scrolling if content overflows */
+    display: flex;
+    position: static;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    max-height: none;
+    overflow: visible;
   }
 
   nav ul {
-    list-style: none;
-    margin: 0;
-    margin-right: 3em;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
+    flex-direction: row;
+    gap: 2em;
   }
+}
 
-  nav ul li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    transition: color 0.3s ease;
-  }
-
-  nav ul li a:hover {
-    color: #6a4e42;
-  }
-
-  nav.show {
-    display: block;
-  }
-
-  @media screen and (min-width: 768px) {
-    .menu-toggle {
-      display: none; /* Hide hamburger menu on larger screens */
-    }
-
-    nav {
-      display: flex; /* Ensure navigation is visible on larger screens */
-      position: static;
-      background: none;
-      box-shadow: none;
-      padding: 0;
-      max-height: none; /* Remove height restriction */
-      overflow: visible; /* Remove scrolling */
-    }
-
-    nav ul {
-      flex-direction: row;
-      gap: 2em;
-    }
-  }
-  .contact-section, .about-section, .home-section {
+/* ----------------------------
+   Section Layouts (Home, About, Contact)
+----------------------------- */
+.contact-section, .about-section, .home-section {
   padding-top: 120px;
+  padding-bottom: 100px;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  background-attachment: fixed; /* Parallax effect */
+  background-attachment: fixed;
   background-size: cover;
   background-position: center;
-  }
-  
-  .home-section {
-  background-image: url('home-background.jpg'); /* Replace with your image */
-  }
-  
-  .about-section {
-  background-image: url('about-background.jpg'); /* Replace with your image */
-  }
-  
-  .contact-section {
-  background-image: url('contact-background.jpg'); /* Replace with your image */
-  }
-  
-  .contact-text, .about-text, .home-text {
+}
+
+.home-section {
+  background-image: url(/bg.jpg);
+}
+
+.about-section {
+  background-image: url('about-background.jpg');
+}
+
+.contact-section {
+  background-image: url('contact-background.jpg');
+}
+
+/* ----------------------------
+   Text Container Styles in Sections
+----------------------------- */
+.contact-text, .about-text, .home-text {
   z-index: 2;
   background: rgba(255, 255, 255, 0.7);
   padding: 2em;
@@ -147,70 +160,83 @@ body::before {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   max-width: 600px;
   text-align: center;
-  }
-  
-  .social-links {
+  transition: background 0.5s ease;
+}
+
+/* ----------------------------
+   Social Links Styling
+----------------------------- */
+.social-links {
   padding: 0;
   list-style: none;
   display: flex;
   justify-content: center;
   gap: 1.5em;
   margin: 1em 0;
-  }
-  
-  .social-links a {
+}
+
+.social-links a {
   text-decoration: none;
   color: #444;
   font-weight: 500;
   transition: color 0.3s;
-  }
-  
-  .social-links a:hover {
+}
+
+.social-links a:hover {
   color: #c98961;
-  }
-  
-  .sunflower {
+}
+
+/* ----------------------------
+   Sunflower Graphics
+----------------------------- */
+.sunflower {
   position: absolute;
   background-image: url('sunflower.png');
   background-size: contain;
   background-repeat: no-repeat;
   z-index: 1;
-  }
-  
-  .sunflower-home {
+}
+
+.sunflower-home {
   bottom: -150px;
   left: 50%;
   transform: translateX(-50%);
   width: 700px;
   height: 700px;
   animation: glowfade 4s infinite alternate;
-  }
-  
-  .sunflower-left {
+}
+
+.sunflower-left {
   left: 0;
   width: 70%;
   height: 70%;
   animation: rotateSun 20s linear infinite, glowfade 4s infinite alternate;
-  }
-  
-  .sunflower-right {
+}
+
+.sunflower-right {
   right: 0;
   width: 70%;
   height: 70%;
   animation: rotateSun 20s linear infinite, glowfade 4s infinite alternate;
-  }
-  
-  @keyframes glowfade {
+}
+
+/* ----------------------------
+   Sunflower Animations
+----------------------------- */
+@keyframes glowfade {
   0% { filter: drop-shadow(0 0 10px #ffeaa7); }
   100% { filter: drop-shadow(0 0 30px #ffd166); }
-  }
-  
-  @keyframes rotateSun {
+}
+
+@keyframes rotateSun {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-  }
-  
-  @media screen and (max-width: 768px) {
+}
+
+/* ----------------------------
+   Mobile Navbar Styling
+----------------------------- */
+@media screen and (max-width: 768px) {
   nav ul {
     flex-direction: column;
     gap: 1em;
@@ -222,52 +248,57 @@ body::before {
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
-  }
-  /* Contact me icons*/
-  .contact-text {
+}
+
+/* ----------------------------
+   Contact Icons Section
+----------------------------- */
+.contact-text {
   text-align: center;
-  }
-  
-  .contact-icons {
+}
+
+.contact-icons {
   display: grid;
   grid-template-columns: repeat(2, 80px);
   gap: 30px 60px;
   justify-content: center;
   margin-top: 20px;
-  }
-  
-  .icon-block {
+}
+
+.icon-block {
   text-align: center;
   position: relative;
-  }
-  
-  .icon-block i {
+}
+
+.icon-block i {
   font-size: 30px;
   color: #333;
   cursor: pointer;
   transition: transform 0.3s ease, color 0.3s ease;
-  }
-  
-  .icon-block i:hover {
+}
+
+.icon-block i:hover {
   color: #0077b5;
   transform: scale(1.2);
-  }
-  
-  .icon-block span {
+}
+
+.icon-block span {
   opacity: 0;
   transition: opacity 0.3s ease;
   font-size: 12px;
   margin-top: 6px;
   display: block;
   color: #555;
-  }
-  
-  .icon-block:hover span {
+}
+
+.icon-block:hover span {
   opacity: 1;
-  }
-  
-  /* Optional: remove underline from LinkedIn icon */
-  .icon-block a {
+}
+
+/* ----------------------------
+   Remove Link Styling from Icons
+----------------------------- */
+.icon-block a {
   text-decoration: none;
   color: inherit;
-  }
+}
